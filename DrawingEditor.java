@@ -12,8 +12,6 @@ public class DrawingEditor extends JFrame
 {
     //Creates an instance variable canvas that is declared type DrawingPanel
     private DrawingPanel canvas;
-    //Creates an instance variable controls that is declared type ControlPanel
-    private ControlPanel controls;
     /**
      * Constructor for objects of class DrawingEditor
      */
@@ -22,7 +20,6 @@ public class DrawingEditor extends JFrame
         //Puts a new DrawingPanel object into the canvas instance variable
         this.canvas = new DrawingPanel();
         //Puts a new ControlPanel object into the controls instance variable
-        controls = new ControlPanel(canvas);
         this.add(canvas);
         //Sets the title of the window to "Drawing Editor" and the size of the frame to 600x600
         this.setTitle("Kill the Goomba");

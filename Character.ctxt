@@ -3,4 +3,6 @@ comment0.params=x\ y\ length\ width
 comment0.target=Character(int,\ int,\ int,\ int)
 comment1.params=g2
 comment1.target=void\ draw(java.awt.Graphics2D)
-numComments=2
+comment2.params=dx\ dy
+comment2.target=void\ translateCharacter(int,\ int)
+numComments=3

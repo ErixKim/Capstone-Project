@@ -15,21 +15,21 @@ import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
 /**
- * Drawing Panel class is a subclass of JPanel and its main purpose is to draw the shapes and change the
- * color
  * 
  * @author Eric Kim
- * @version 3/4/2016
+ * @version 
  */
 public class DrawingPanel extends JPanel
 {
-    private Rectangle box;
+    private Character box;
+    private Target target;
     /**
      * Constructor for objects of class DrawingPanel
      */
     public DrawingPanel()
     {
-        box = new Rectangle(280, 520, 20, 30);   
+        box = new Character(280, 520, 20, 30); 
+        target = new Target(300,50, 30, 30);
         this.setFocusable(true);
         this.addKeyListener(new KeyStrokeListener());
     }
@@ -44,13 +44,14 @@ public class DrawingPanel extends JPanel
         //Casts the Graphics object passed in as a parameter to a Graphics g2 object
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.draw(box);
+        box.draw(g2);
+        target.draw(g2);
         repaint();
     }
     
-    public void moveRectangleBy(int dx, int dy)
+    public void moveCharacterBy(int dx, int dy)
     {
-        box.translate(dx, dy);
+        box.translateCharacter(dx, dy);
         repaint();      
     }
     
@@ -62,11 +63,11 @@ public class DrawingPanel extends JPanel
             
             if (key.equals("LEFT"))
             {
-                moveRectangleBy(-5, 0);            
+                moveCharacterBy(-5, 0);            
             }
             else if (key.equals("RIGHT"))
             {
-                moveRectangleBy(5, 0);            
+                moveCharacterBy(5, 0);            
             }
         }
 

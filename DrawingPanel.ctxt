@@ -6,5 +6,5 @@ comment1.params=g
 comment1.target=void\ paintComponent(java.awt.Graphics)
 comment1.text=\r\n\ paintComponent\ is\ where\ all\ the\ drawing\ of\ the\ shapes\ in\ shapeList\ occurs\r\n\ \r\n\ @param\ \ Graphics\ g\r\n
 comment2.params=dx\ dy
-comment2.target=void\ moveRectangleBy(int,\ int)
+comment2.target=void\ moveCharacterBy(int,\ int)
 numComments=3
