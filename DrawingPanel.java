@@ -23,6 +23,7 @@ public class DrawingPanel extends JPanel
 {
     private Character box;
     private Target target;
+    private Bullet bullet;
     /**
      * Constructor for objects of class DrawingPanel
      */
@@ -30,6 +31,7 @@ public class DrawingPanel extends JPanel
     {
         box = new Character(280, 520, 20, 30); 
         target = new Target(300,50, 30, 30);
+        bullet = new Bullet(280, 500, 10,10);
         this.setFocusable(true);
         this.addKeyListener(new KeyStrokeListener());
     }
@@ -46,6 +48,7 @@ public class DrawingPanel extends JPanel
         Graphics2D g2 = (Graphics2D) g;
         box.draw(g2);
         target.draw(g2);
+        bullet.draw(g2);
         repaint();
     }
     
@@ -53,6 +56,11 @@ public class DrawingPanel extends JPanel
     {
         box.translateCharacter(dx, dy);
         repaint();      
+    }
+    
+    public void shootBullets()
+    {
+        
     }
     
     class KeyStrokeListener implements KeyListener
@@ -68,6 +76,10 @@ public class DrawingPanel extends JPanel
             else if (key.equals("RIGHT"))
             {
                 moveCharacterBy(5, 0);            
+            }
+            else if (key.equals("SPACE"))
+            {
+                
             }
         }
 

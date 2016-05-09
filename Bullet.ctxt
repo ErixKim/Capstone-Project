@@ -1,8 +1,6 @@
 #BlueJ class context
 comment0.params=x\ y\ length\ width
-comment0.target=Target(int,\ int,\ int,\ int)
+comment0.target=Bullet(int,\ int,\ int,\ int)
 comment1.params=g2
 comment1.target=void\ draw(java.awt.Graphics2D)
-comment2.params=
-comment2.target=void\ randomMovement()
-numComments=3
+numComments=2

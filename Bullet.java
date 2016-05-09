@@ -1,33 +1,28 @@
-
-/**
- * Write a description of class Bullet here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import java.awt.event.*;
+import java.awt.*;
+import javax.swing.*;
+import java.lang.Math;
+import java.awt.geom.Rectangle2D;
 public class Bullet
 {
-    // instance variables - replace the example below with your own
     private int x;
-
-    /**
-     * Constructor for objects of class Bullet
-     */
-    public Bullet()
+    private int y;
+    private int length;
+    private int width;
+    private Rectangle bullet = new Rectangle(0,0,0,0);
+    
+    public Bullet(int x, int y, int length, int width)
     {
-        // initialise instance variables
-        x = 0;
+        this.x = x;
+        this.y = y;
+        this.length = length;
+        this.width = width;
+        bullet = new Rectangle(this.x,this.y,this.length,this.width);
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
+    public void draw(Graphics2D g2)
     {
-        // put your code here
-        return x + y;
+        g2.setColor(Color.BLACK);
+        g2.fill(bullet);
+        g2.draw(bullet);
     }
 }
