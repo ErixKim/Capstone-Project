@@ -26,8 +26,8 @@ public class Target
     }
     public void randomMovement()
     {
-        int randNum = (int) Math.random() * 1;
-        if (randNum == 0)
+        int randNum = (int) Math.random() * 2 + 1;
+        if (randNum == 1)
         {
             this.x += 5;
             square = new Rectangle(this.x, this.y, this.length, this.width);

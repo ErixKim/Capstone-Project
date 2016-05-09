@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.util.Timer;
 import javax.swing.*;
 /**
  * DrawingEditor class is a subclass of JFrame and creates the frame which contains the buttons and
@@ -12,6 +13,7 @@ public class DrawingEditor extends JFrame
 {
     //Creates an instance variable canvas that is declared type DrawingPanel
     private DrawingPanel canvas;
+    private static Target target;
     /**
      * Constructor for objects of class DrawingEditor
      */
@@ -22,9 +24,10 @@ public class DrawingEditor extends JFrame
         //Puts a new ControlPanel object into the controls instance variable
         this.add(canvas);
         //Sets the title of the window to "Drawing Editor" and the size of the frame to 600x600
-        this.setTitle("Kill The Goomba");
+        this.setTitle("Hit the Target");
         this.setSize(600,600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        target = canvas.getTarget();
         //Sets the DrawingEditor object visibility to true
         this.setVisible(true);
     }
@@ -36,5 +39,7 @@ public class DrawingEditor extends JFrame
     {
         //Creates a new DrawingEditor object named scene
         DrawingEditor scene = new DrawingEditor();
+        Timer t = new Timer();
+        t.scheduleAtFixedRate(new clock(target), 100,500);
     }
 }

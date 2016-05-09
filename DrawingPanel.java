@@ -35,7 +35,7 @@ public class DrawingPanel extends JPanel
         this.setFocusable(true);
         this.addKeyListener(new KeyStrokeListener());
     }
-    
+
     /**
      * paintComponent is where all the drawing of the shapes in shapeList occurs
      * 
@@ -51,24 +51,29 @@ public class DrawingPanel extends JPanel
         bullet.draw(g2);
         repaint();
     }
-    
+
+    public Target getTarget()
+    {
+        return target;
+    }
+
     public void moveCharacterBy(int dx, int dy)
     {
         box.translateCharacter(dx, dy);
         repaint();      
     }
-    
+
     public void shootBullets()
     {
-        
+
     }
-    
+
     class KeyStrokeListener implements KeyListener
     {
         public void keyPressed(KeyEvent event) 
         {
             String key = KeyStroke.getKeyStrokeForEvent(event).toString().replace("pressed ", ""); 
-            
+
             if (key.equals("LEFT"))
             {
                 moveCharacterBy(-5, 0);            
@@ -79,7 +84,7 @@ public class DrawingPanel extends JPanel
             }
             else if (key.equals("SPACE"))
             {
-                
+
             }
         }
 
