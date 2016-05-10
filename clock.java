@@ -1,15 +1,14 @@
 import java.util.TimerTask;
-
-public class clock extends TimerTask
+public class Clock extends TimerTask
 {
-    private Target main;
-    public clock(Target main)
+    private Target target;
+    public Clock(Target target)
     {
-        this.main= main;
-
+        this.target = target;
     }
 
-    public void run(){
-        main.randomMovement();
+    public void run()
+    {
+        target.randomMovement();
     }
 }

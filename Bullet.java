@@ -3,26 +3,26 @@ import java.awt.*;
 import javax.swing.*;
 import java.lang.Math;
 import java.awt.geom.Rectangle2D;
-public class Bullet
+public class Bullet extends Sprite
 {
-    private int x;
-    private int y;
-    private int length;
-    private int width;
+    private final int BULLET_SPEED = 10;
     private Rectangle bullet = new Rectangle(0,0,0,0);
-    
     public Bullet(int x, int y, int length, int width)
     {
-        this.x = x;
-        this.y = y;
-        this.length = length;
-        this.width = width;
-        bullet = new Rectangle(this.x,this.y,this.length,this.width);
+        super(x,y,length,width);
+        bullet = new Rectangle(getX(), getY(), getLength(), getWidth());
     }
     public void draw(Graphics2D g2)
     {
         g2.setColor(Color.BLACK);
         g2.fill(bullet);
         g2.draw(bullet);
+    }
+    public void move()
+    {
+        System.out.println("x");
+        int y = getY();
+        setY(y - BULLET_SPEED);
+        bullet = new Rectangle(getX(), getY(), getLength(), getWidth());
     }
 }

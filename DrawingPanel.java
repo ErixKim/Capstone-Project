@@ -23,15 +23,14 @@ public class DrawingPanel extends JPanel
 {
     private Character box;
     private Target target;
-    private Bullet bullet;
+    private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
     /**
      * Constructor for objects of class DrawingPanel
      */
-    public DrawingPanel()
+    public DrawingPanel(Target target)
     {
         box = new Character(280, 520, 20, 30); 
-        target = new Target(300,50, 30, 30);
-        bullet = new Bullet(280, 500, 10,10);
+        this.target = target;
         this.setFocusable(true);
         this.addKeyListener(new KeyStrokeListener());
     }
@@ -48,13 +47,14 @@ public class DrawingPanel extends JPanel
         Graphics2D g2 = (Graphics2D) g;
         box.draw(g2);
         target.draw(g2);
-        bullet.draw(g2);
+        for (int i = 0; i < bullets.size(); i++)
+        {
+            if (bullets.get(i).getBounds().getY() != 0)
+            {
+                bullets.get(i).draw(g2);
+            }
+        }
         repaint();
-    }
-
-    public Target getTarget()
-    {
-        return target;
     }
 
     public void moveCharacterBy(int dx, int dy)
@@ -63,11 +63,28 @@ public class DrawingPanel extends JPanel
         repaint();      
     }
 
-    public void shootBullets()
+    public void Shoot() 
     {
-
+        bullets.add(new Bullet(box.getX() + box.getWidth()/2, box.getY() - box.getLength(), 10, 10));
+        System.out.println(box.getX());
     }
 
+    public void updateBullets()
+    {
+        for (int i = 0; i < bullets.size(); i++)
+        {
+            Bullet bullet = bullets.get(i);
+            while (bullet.isVisible() == true)
+            {
+                bullet.move();
+                if (bullet.getY() < 0)
+                {
+                    bullet.setVisible(false);
+                }
+            }
+        }
+    }
+    
     class KeyStrokeListener implements KeyListener
     {
         public void keyPressed(KeyEvent event) 
@@ -84,8 +101,10 @@ public class DrawingPanel extends JPanel
             }
             else if (key.equals("SPACE"))
             {
-
+                Shoot();
+                updateBullets();
             }
+
         }
 
         public void keyTyped(KeyEvent event) {}

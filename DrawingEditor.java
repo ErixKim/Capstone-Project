@@ -13,21 +13,24 @@ public class DrawingEditor extends JFrame
 {
     //Creates an instance variable canvas that is declared type DrawingPanel
     private DrawingPanel canvas;
-    private static Target target;
+    private Target target;
     /**
      * Constructor for objects of class DrawingEditor
      */
     public DrawingEditor()
     {
         //Puts a new DrawingPanel object into the canvas instance variable
-        this.canvas = new DrawingPanel();
+        target = new Target(300,50, 30, 30);
+        this.canvas = new DrawingPanel(target);
+        Timer timer = new Timer();
+        //Have an i instance variable that acts as a counter and if the counter % 2 == 0, the target moves left, else right. 
+        timer.scheduleAtFixedRate(new Clock(target),100,500);
         //Puts a new ControlPanel object into the controls instance variable
         this.add(canvas);
         //Sets the title of the window to "Drawing Editor" and the size of the frame to 600x600
         this.setTitle("Hit the Target");
         this.setSize(600,600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        target = canvas.getTarget();
         //Sets the DrawingEditor object visibility to true
         this.setVisible(true);
     }
@@ -39,7 +42,5 @@ public class DrawingEditor extends JFrame
     {
         //Creates a new DrawingEditor object named scene
         DrawingEditor scene = new DrawingEditor();
-        Timer t = new Timer();
-        t.scheduleAtFixedRate(new clock(target), 100,500);
     }
 }
