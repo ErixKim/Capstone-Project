@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.params=x\ y\ length\ width
+comment0.target=Sprite(int,\ int,\ int,\ int)
+comment1.params=
+comment1.target=int\ getX()
+comment2.params=
+comment2.target=int\ getY()
+comment3.params=
+comment3.target=int\ getLength()
+comment4.params=
+comment4.target=int\ getWidth()
+comment5.params=x
+comment5.target=void\ setX(int)
+comment6.params=y
+comment6.target=void\ setY(int)
+comment7.params=
+comment7.target=java.awt.Rectangle\ getBounds()
+comment8.params=
+comment8.target=boolean\ isVisible()
+comment9.params=visible
+comment9.target=void\ setVisible(java.lang.Boolean)
+numComments=10
