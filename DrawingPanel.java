@@ -20,6 +20,7 @@ import javax.swing.*;
  * @version 
  */
 public class DrawingPanel extends JPanel
+
 {
     private Character box;
     private Target target;
@@ -51,7 +52,9 @@ public class DrawingPanel extends JPanel
         {
             if (bullets.get(i).getBounds().getY() != 0)
             {
+                System.out.println("X");
                 bullets.get(i).draw(g2);
+                repaint();
             }
         }
         repaint();
@@ -67,27 +70,37 @@ public class DrawingPanel extends JPanel
     {
         bullets.add(new Bullet(box.getX() + box.getWidth()/2, box.getY() - box.getLength(), 10, 10));
         System.out.println(box.getX());
+        updateBullets();
     }
 
     public void updateBullets()
     {
-        for (int i = 0; i < bullets.size(); i++)
-        {
-            Bullet bullet = bullets.get(i);
-            while (bullet.isVisible() == true)
+        try{
+            for (int i = 0; i < bullets.size(); i++)
             {
-                bullet.move();
-                if (bullet.getY() < 0)
+                //                 Bullet bullet = bullets.get(i);
+                while (bullets.get(i).isVisible() == true)
                 {
-                    bullet.setVisible(false);
+                    bullets.get(i).move();
+                    repaint();
+                    Thread.sleep(100);
+                    System.out.println(bullets.get(i).getY());
+                    if (bullets.get(i).getY() < 0)
+                    {
+                        bullets.get(i).setVisible(false);
+                    }
                 }
             }
         }
+        catch (Exception e) 
+        {
+            System.out.println(e);
+        }
     }
-    
+
     class KeyStrokeListener implements KeyListener
     {
-        public void keyPressed(KeyEvent event) 
+        public void keyPressed(KeyEvent event)
         {
             String key = KeyStroke.getKeyStrokeForEvent(event).toString().replace("pressed ", ""); 
 
@@ -102,7 +115,6 @@ public class DrawingPanel extends JPanel
             else if (key.equals("SPACE"))
             {
                 Shoot();
-                updateBullets();
             }
 
         }

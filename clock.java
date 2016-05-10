@@ -5,10 +5,10 @@ public class Clock extends TimerTask
     public Clock(Target target)
     {
         this.target = target;
+
     }
 
-    public void run()
-    {
+    public void run(){
         target.randomMovement();
     }
 }

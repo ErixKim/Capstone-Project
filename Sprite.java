@@ -11,7 +11,7 @@ public abstract class Sprite
     private int y;
     private int length;
     private int width;
-    private boolean isVisible;
+    private boolean isVisible = true;
     public Sprite(int x, int y, int length, int width)
     {
         this.x = x;
