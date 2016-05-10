@@ -23,7 +23,6 @@ public class DrawingPanel extends JPanel
 {
     private Character box;
     private Target target;
-    //     private Bullet bullet;
     private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
     /**
      * Constructor for objects of class DrawingPanel
@@ -32,7 +31,6 @@ public class DrawingPanel extends JPanel
     {
         box = new Character(280, 520, 20, 30); 
         this.target = target;
-        //         bullet = new Bullet(280, 500, 10,10);
         this.setFocusable(true);
         this.addKeyListener(new KeyStrokeListener());
     }
@@ -86,7 +84,7 @@ public class DrawingPanel extends JPanel
             }
         }
     }
-
+    
     class KeyStrokeListener implements KeyListener
     {
         public void keyPressed(KeyEvent event) 

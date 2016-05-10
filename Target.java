@@ -23,6 +23,7 @@ public class Target extends Sprite
     {
         int x = getX();
         int randNum = (int) Math.random() * 1;
+
         if (randNum == 1)
         {
             setX(x+15);

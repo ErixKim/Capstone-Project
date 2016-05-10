@@ -28,7 +28,7 @@ public class DrawingEditor extends JFrame
         //Puts a new ControlPanel object into the controls instance variable
         this.add(canvas);
         //Sets the title of the window to "Drawing Editor" and the size of the frame to 600x600
-        this.setTitle("Kill The Goomba");
+        this.setTitle("Hit the Target");
         this.setSize(600,600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //Sets the DrawingEditor object visibility to true
