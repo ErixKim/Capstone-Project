@@ -1,14 +1,18 @@
 import java.util.TimerTask;
+import java.util.ArrayList;
 public class Clock extends TimerTask
 {
-    private Target target;
-    public Clock(Target target)
+    private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+    public Clock(ArrayList<Bullet> bullets)
     {
-        this.target = target;
-
+        this.bullets = bullets;
     }
 
-    public void run(){
-        target.randomMovement();
+    public void run()
+    {
+        for (int i = 0; i < bullets.size(); i++)
+        {
+            bullets.get(i).move();
+        }
     }
 }

@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=target
-comment0.target=DrawingPanel(Target)
+comment0.params=target\ bullets
+comment0.target=DrawingPanel(Target,\ java.util.ArrayList)
 comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ DrawingPanel\r\n
 comment1.params=g
 comment1.target=void\ paintComponent(java.awt.Graphics)
@@ -10,5 +10,5 @@ comment2.target=void\ moveCharacterBy(int,\ int)
 comment3.params=
 comment3.target=void\ Shoot()
 comment4.params=
-comment4.target=void\ updateBullets()
+comment4.target=void\ checkCollisions()
 numComments=5

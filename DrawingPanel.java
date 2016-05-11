@@ -14,13 +14,14 @@ import java.awt.Graphics2D;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
+import java.util.Timer;
+
 /**
  * 
  * @author Eric Kim
  * @version 
  */
 public class DrawingPanel extends JPanel
-
 {
     private Character box;
     private Target target;
@@ -28,10 +29,11 @@ public class DrawingPanel extends JPanel
     /**
      * Constructor for objects of class DrawingPanel
      */
-    public DrawingPanel(Target target)
+    public DrawingPanel(Target target, ArrayList<Bullet> bullets)
     {
         box = new Character(280, 520, 20, 30); 
         this.target = target;
+        this.bullets = bullets;
         this.setFocusable(true);
         this.addKeyListener(new KeyStrokeListener());
     }
@@ -47,54 +49,58 @@ public class DrawingPanel extends JPanel
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         box.draw(g2);
-        target.draw(g2);
+        if (target.isVisible() == true)
+        {
+            target.draw(g2);
+        }
+        else
+        {
+            target = new Target(0,0,0,0);
+        }
         for (int i = 0; i < bullets.size(); i++)
         {
-            if (bullets.get(i).getBounds().getY() != 0)
+            if (bullets.get(i).isVisible() == true)
             {
-                System.out.println("X");
                 bullets.get(i).draw(g2);
-                repaint();
+            }
+            else
+            {
+                bullets.remove(i);
+                if (i != 0)
+                {
+                    i--;
+                }
             }
         }
+        checkCollisions();
         repaint();
     }
 
     public void moveCharacterBy(int dx, int dy)
     {
         box.translateCharacter(dx, dy);
-        repaint();      
+        repaint();
     }
 
     public void Shoot() 
     {
         bullets.add(new Bullet(box.getX() + box.getWidth()/2, box.getY() - box.getLength(), 10, 10));
-        System.out.println(box.getX());
-        updateBullets();
+        repaint();
+
     }
 
-    public void updateBullets()
+    public void checkCollisions()
     {
-        try{
-            for (int i = 0; i < bullets.size(); i++)
-            {
-                //                 Bullet bullet = bullets.get(i);
-                while (bullets.get(i).isVisible() == true)
-                {
-                    bullets.get(i).move();
-                    repaint();
-                    Thread.sleep(100);
-                    System.out.println(bullets.get(i).getY());
-                    if (bullets.get(i).getY() < 0)
-                    {
-                        bullets.get(i).setVisible(false);
-                    }
-                }
-            }
-        }
-        catch (Exception e) 
+        Rectangle target1 = target.getBounds();
+        for (int i = 0; i < bullets.size(); i++)
         {
-            System.out.println(e);
+            Rectangle bullet1 = bullets.get(i).getBounds();
+            if (target1.intersects(bullet1))
+            {
+                target.setVisible(false);
+                bullets.get(i).setVisible(false);
+                repaint();
+            }
         }
     }
 
@@ -102,21 +108,33 @@ public class DrawingPanel extends JPanel
     {
         public void keyPressed(KeyEvent event)
         {
-            String key = KeyStroke.getKeyStrokeForEvent(event).toString().replace("pressed ", ""); 
+            //             String key = KeyStroke.getKeyStrokeForEvent(event).toString().replace("pressed ", ""); 
+            // 
+            //             if (key.equals("LEFT"))
+            //             {
+            //                 moveCharacterBy(-5, 0);            
+            //             }
+            //             else if (key.equals("RIGHT"))
+            //             {
+            //                 moveCharacterBy(5, 0);            
+            //             }
+            //             else if (key.equals("SPACE"))
+            //             {
+            //                 Shoot();
+            //             }
+            int key = event.getKeyCode();
 
-            if (key.equals("LEFT"))
-            {
-                moveCharacterBy(-5, 0);            
-            }
-            else if (key.equals("RIGHT"))
-            {
-                moveCharacterBy(5, 0);            
-            }
-            else if (key.equals("SPACE"))
-            {
+            if (key == KeyEvent.VK_SPACE) {
                 Shoot();
             }
 
+            if (key == KeyEvent.VK_LEFT) {
+                moveCharacterBy(-5, 0);  
+            }
+
+            if (key == KeyEvent.VK_RIGHT) {
+                moveCharacterBy(5, 0);   
+            }
         }
 
         public void keyTyped(KeyEvent event) {}
@@ -124,4 +142,3 @@ public class DrawingPanel extends JPanel
         public void keyReleased(KeyEvent event) {}
     }
 }
-

@@ -22,16 +22,26 @@ public class Target extends Sprite
     public void randomMovement()
     {
         int x = getX();
-        int randNum = (int) Math.random() * 1;
 
-        if (randNum == 1)
+        if (getX() < 100)
         {
-            setX(x+15);
-            square = new Rectangle(getX(), getY(), getLength(), getWidth());
+            for (int i = getX(); i < 500; i += 20)
+            {
+                setX(x+20);
+                square = new Rectangle(getX(), getY(), getLength(), getWidth());
+            }
+        }
+        else if (getX() > 500)
+        {
+            for (int i = getX(); i > 100; i -= 20)
+            {
+                setX(x-20);
+                square = new Rectangle(getX(), getY(), getLength(), getWidth());
+            }
         }
         else
         {
-            setX(x-15);
+            setX(x+20);
             square = new Rectangle(getX(), getY(), getLength(), getWidth());
         }
     }
