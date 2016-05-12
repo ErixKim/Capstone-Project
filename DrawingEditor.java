@@ -30,7 +30,7 @@ public class DrawingEditor extends JFrame
         this.canvas = new DrawingPanel(target, bullets);
         Timer timer = new Timer();
         //Creates a Clock object with bullets passed in 
-        Clock clock1 = new Clock(bullets);
+        Clock1 clock1 = new Clock1(bullets);
         //Creates a clock2 object with target passed in
         Clock2 clock2 = new Clock2(target);
         //Uses the method scheduleAtFixedRate in order to run the run method in the clock class at given intervals

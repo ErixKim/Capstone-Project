@@ -8,11 +8,11 @@ import java.util.ArrayList;
  * @author Eric Kim
  * @version 5/11/2016
  */
-public class Clock extends TimerTask
+public class Clock1 extends TimerTask
 {
     //Private instance variable to hold the bullets created
     private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
-    public Clock(ArrayList<Bullet> bullets)
+    public Clock1(ArrayList<Bullet> bullets)
     {
         //Sets bullets instance variable to parameter variable bullets
         this.bullets = bullets;
