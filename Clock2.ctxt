@@ -3,4 +3,5 @@ comment0.params=target
 comment0.target=Clock2(Target)
 comment1.params=
 comment1.target=void\ run()
+comment1.text=\r\n\ run\ method\ calls\ the\ movement\ method\ in\ the\ target\ class\r\n
 numComments=2
