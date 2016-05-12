@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * It also utilizes the Clock classes and calls methods from the bullet and target class.  
  * 
  * @author Eric Kim
- * @version 3/4/2016
+ * @version 5/11/2016
  */
 public class DrawingEditor extends JFrame
 {

@@ -78,11 +78,19 @@ public abstract class Sprite
         this.y = y;
     }
     
+    /**
+     * getBounds method to get the bounds of the rectangle object
+     * returns a new rectangle with the given boundaries
+     */
     public Rectangle getBounds()
     {
         return new Rectangle(x, y, length, width);
     }
     
+    /**
+     * Accessor method
+     * returns the boolean of isVisible
+     */
     public boolean isVisible() {
         return isVisible;
     }
