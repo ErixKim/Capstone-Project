@@ -113,10 +113,12 @@ public class DrawingPanel extends JPanel
      */
     public void checkCollisions()
     {
+        //Gets the bounds of the target object by calling the getBounds method on it
         Rectangle target1 = target.getBounds();
         //Iterates through the bullets list
         for (int i = 0; i < bullets.size(); i++)
         {
+            //Gets the bounds of the bullet.get(i) object by calling the getBounds method on it
             Rectangle bullet1 = bullets.get(i).getBounds();
             //Checks if the bullet and the target intersect each other
             if (target1.intersects(bullet1))
