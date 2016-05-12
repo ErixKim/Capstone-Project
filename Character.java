@@ -21,7 +21,15 @@ public class Character extends Sprite
     public void translateCharacter(int dx, int dy)
     {
         int x = getX();
-        setX(x+dx);
-        rect = new Rectangle(getX(), getY(), getLength(), getWidth());
+        if (getX() > 0 && getX() < 560)
+        {
+            setX(x+dx);        
+            rect = new Rectangle(getX(), getY(), getLength(), getWidth());
+        }
+        else
+        {
+            setX(280);
+            rect = new Rectangle(getX(), getY(), getLength(), getWidth());
+        }
     }
 }

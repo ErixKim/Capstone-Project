@@ -6,10 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.awt.Graphics;
-import java.awt.geom.Ellipse2D;
 import java.util.Random;
-import javax.swing.JColorChooser;
-import java.awt.geom.Point2D;
 import java.awt.Graphics2D;
 import java.awt.event.*;
 import java.awt.*;
@@ -26,6 +23,8 @@ public class DrawingPanel extends JPanel
     private Character box;
     private Target target;
     private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+    private int bulletReloadCount = 10;
+    private int bulletCount = 0;
     /**
      * Constructor for objects of class DrawingPanel
      */
@@ -86,7 +85,6 @@ public class DrawingPanel extends JPanel
     {
         bullets.add(new Bullet(box.getX() + box.getWidth()/2, box.getY() - box.getLength(), 10, 10));
         repaint();
-
     }
 
     public void checkCollisions()
@@ -108,33 +106,35 @@ public class DrawingPanel extends JPanel
     {
         public void keyPressed(KeyEvent event)
         {
-            //             String key = KeyStroke.getKeyStrokeForEvent(event).toString().replace("pressed ", ""); 
-            // 
-            //             if (key.equals("LEFT"))
-            //             {
-            //                 moveCharacterBy(-5, 0);            
-            //             }
-            //             else if (key.equals("RIGHT"))
-            //             {
-            //                 moveCharacterBy(5, 0);            
-            //             }
-            //             else if (key.equals("SPACE"))
-            //             {
-            //                 Shoot();
-            //             }
-            int key = event.getKeyCode();
+            String key = KeyStroke.getKeyStrokeForEvent(event).toString().replace("pressed ", ""); 
 
-            if (key == KeyEvent.VK_SPACE) {
-                Shoot();
+            if (key.equals("LEFT"))
+            {
+                moveCharacterBy(-5, 0);            
+            }
+            else if (key.equals("RIGHT"))
+            {
+                moveCharacterBy(5, 0);            
+            }
+            else if ( key.equals("R"))
+            {
+                bulletReloadCount++;
+            }
+            else if (key.equals("SPACE"))
+            {
+                if (bulletReloadCount >= 10)
+                {
+                    bulletReloadCount = 0;
+                    bulletCount++;
+                    Shoot();
+                }
+                if (bulletCount >= 5)
+                {
+                    System.out.println("Game Over!");
+                    System.out.println("You couldn't hit the target within 5 bullets!");
+                }
             }
 
-            if (key == KeyEvent.VK_LEFT) {
-                moveCharacterBy(-5, 0);  
-            }
-
-            if (key == KeyEvent.VK_RIGHT) {
-                moveCharacterBy(5, 0);   
-            }
         }
 
         public void keyTyped(KeyEvent event) {}

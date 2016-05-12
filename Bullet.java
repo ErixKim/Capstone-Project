@@ -5,7 +5,7 @@ import java.lang.Math;
 import java.awt.geom.Rectangle2D;
 public class Bullet extends Sprite
 {
-    private final int BULLET_SPEED = 10;
+    private final int BULLET_SPEED = 2;
     private Rectangle bullet = new Rectangle(0,0,0,0);
     public Bullet(int x, int y, int length, int width)
     {
