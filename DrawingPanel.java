@@ -97,6 +97,7 @@ public class DrawingPanel extends JPanel
             {
                 target.setVisible(false);
                 bullets.get(i).setVisible(false);
+                System.out.println("You win!");
                 repaint();
             }
         }
@@ -128,10 +129,9 @@ public class DrawingPanel extends JPanel
                     bulletCount++;
                     Shoot();
                 }
-                if (bulletCount >= 5)
+                if (bulletCount >= 5 && target.isVisible() == true)
                 {
-                    System.out.println("Game Over!");
-                    System.out.println("You couldn't hit the target within 5 bullets!");
+                    System.out.println("Game Over! You couldn't hit the target within 5 bullets!");
                 }
             }
 
